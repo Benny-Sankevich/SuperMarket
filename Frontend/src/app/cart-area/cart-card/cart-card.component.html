@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-actions>
+        <img [src]="imageUrl" alt="{{cartItem.product.name}}"><br>
+        <button mat-mini-fab (click)="editItemCartAmount()" [hidden]="!enableChangesButtons">
+            <mat-icon>edit</mat-icon>
+        </button><br>
+        <button mat-mini-fab color="warn" (click)="deleteItemFromCart()" [hidden]="!enableChangesButtons">
+            <mat-icon>remove_shopping_cart</mat-icon>
+        </button><br>
+    </mat-card-actions>
+
+    <mat-card-header>
+        <mat-card-title [ngStyle]="cartItem.background">{{cartItem.product.name}}</mat-card-title>
+        <mat-card-subtitle>Amount: {{cartItem.amount}}</mat-card-subtitle>
+        <mat-card-subtitle>Price: {{cartItem.price |currency}}</mat-card-subtitle>
+        <mat-card-subtitle>Total price: {{cartItem.totalPrice |currency}}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

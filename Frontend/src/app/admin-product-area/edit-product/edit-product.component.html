@@ -1,0 +1,47 @@
+<mat-dialog-content>
+    <h2 matDialogTitle>Edit Product</h2>
+    <form *ngIf="newProduct" [formGroup]="newProduct" (ngSubmit)="newProduct.valid && updateProduct()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId" required>
+                <mat-option *ngFor="let category of categories" [value]="category._id">{{category.categoryName}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="newProduct.get('categoryId').errors?.required">Missing category</mat-error>
+        </mat-form-field>&nbsp;
+
+        <mat-form-field appearance="outline">
+            <mat-label>Product name</mat-label>
+            <input matInput formControlName="name" pattern="^[A-Z].*$" minlength="3" maxlength="20" required>
+            <mat-error *ngIf="newProduct.get('name').errors?.required">Missing product name</mat-error>
+            <mat-error *ngIf="newProduct.get('name').errors?.pattern">Product name must start with a capital letter
+            </mat-error>
+            <mat-error *ngIf="newProduct.get('name').errors?.minlength">Product name must minimum 3 chars</mat-error>
+        </mat-form-field>&nbsp;
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price" min="1" required>
+            <mat-error *ngIf="newProduct.get('price').errors?.required">Missing price</mat-error>
+        </mat-form-field><br>
+
+        <input #imageBox type="file" accept="image/*" name="image" (change)="handleImage($event)">
+        <button mat-button color="primary" class="image-button" type="button" (click)="imageBox.click()">Change
+            Image</button>
+        <br>
+
+        <ng-container *ngIf="preview">
+            <img [src]="preview"><br>
+        </ng-container>
+
+        <mat-dialog-actions>
+            <button mat-button mat-dialog-close>
+                <mat-icon>cancel</mat-icon>Cancel
+            </button>&nbsp;
+            <button mat-button color="primary" mat-stroked-button>
+                <mat-icon>update</mat-icon>Update
+            </button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

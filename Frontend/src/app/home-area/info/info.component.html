@@ -1,0 +1,15 @@
+<div class="card">
+    <img src="./assets/images/info-background.jpg">
+    <p>Have {{totalProducts}} products in super market.</p>
+    <p>Have {{totalOrders}} orders in super market.</p>
+
+    <ng-container *ngIf="user && user.isAdmin === 'no'">
+        <ng-container *ngIf="order === null">
+            <p>Welcome {{user.firstName}} {{user.lastName}},<br>You can create the first order.</p>
+        </ng-container>
+        <ng-container *ngIf="order !== null">
+            <p>Your last order was on {{order?.orderDate | date: 'dd/MM/yyyy'}}</p>
+            <p>And the Total price has {{order?.price| currency}}</p>
+        </ng-container>
+    </ng-container>
+</div>

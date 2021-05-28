@@ -1,0 +1,53 @@
+<form #formInfo="ngForm" (submit)="formInfo.valid && sumOfCart > 0 && addOrder()">
+
+    <h2>Order</h2>
+    <h3>Your price order is {{sumOfCart | currency}}</h3>
+
+    <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <mat-select name="city" [(ngModel)]="user.city" required>
+            <mat-option [value]="user.city">{{user.city}} </mat-option>
+            <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>&nbsp;
+
+    <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput type="text" name="street" [(ngModel)]="user.street" pattern="^[A-Z].*$" minlength="3"
+            maxlength="30" #streetInfo="ngModel" required>
+        <mat-error *ngIf="streetInfo.errors?.required && streetInfo.touched">Missing street</mat-error>
+        <mat-error *ngIf="streetInfo.errors?.pattern && streetInfo.touched">Street must start with a capital letter
+        </mat-error>
+        <mat-error *ngIf="streetInfo.errors?.minlength && streetInfo.touched">Street must be minimum 3 chars</mat-error>
+        <mat-error *ngIf="streetInfo.errors?.maxlength && streetInfo.touched">Street can`t exceed 30 chars</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Delivery Date</mat-label>
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [min]="minDate" [max]="maxDate"
+            name="deliveryDate" [(ngModel)]="order.deliveryDate" #deliveryDateInfo="ngModel" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="deliveryDateInfo.errors?.required">Missing delivery date</mat-error>
+        <mat-error *ngIf="deliveryDateInfo.errors?.matDatepickerMin">You can't choose date before {{minDate | date}}
+        </mat-error>
+        <mat-error *ngIf="deliveryDateInfo.errors?.matDatepickerMax">You can't choose date after {{maxDate | date}}
+        </mat-error>
+    </mat-form-field>&nbsp;
+
+    <mat-form-field appearance="outline">
+        <mat-label>Credit Card</mat-label>
+        <input matInput type="password" name="fourDigitsCreditCard" [(ngModel)]="order.creditCard"
+            #creditCardInfo="ngModel" pattern="^\d{16}$" maxlength="16" required>
+        <mat-error *ngIf="creditCardInfo.errors?.required">Missing credit card</mat-error>
+        <mat-error *ngIf="creditCardInfo.errors?.pattern">Credit card is wrong</mat-error>
+    </mat-form-field><br>
+
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" mat-stroked-button>
+            <mat-icon>save</mat-icon>Save Order
+        </button>
+    </mat-dialog-actions>
+</form>

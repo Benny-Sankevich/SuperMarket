@@ -1,0 +1,36 @@
+<div class="card">
+
+    <div class="header">
+        <h2>Login</h2>&nbsp;&nbsp;
+        <button mat-fab color="warn">
+            <mat-icon>lock</mat-icon>
+        </button>
+    </div>
+    <form #formLogin="ngForm" (submit)="formLogin.valid && login()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="email" [(ngModel)]="credentials.email"
+                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" #emailInfo="ngModel" required>
+            <mat-error *ngIf="emailInfo.errors?.required">Missing Email</mat-error>
+            <mat-error *ngIf="emailInfo.errors?.pattern">Email must be valid</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="password" minlength="8" [(ngModel)]="credentials.password"
+                #passwordInfo="ngModel" required>
+            <mat-error *ngIf="passwordInfo.errors?.required">Missing Password</mat-error>
+            <mat-error *ngIf="passwordInfo.errors?.minlength">Password must be minimum 9 digits.</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <button mat-raised-button type="button" color="warn" routerLink="/register">
+            Sign Up
+        </button>&nbsp;&nbsp;
+        <button mat-raised-button type="submit" color="primary">
+            <mat-icon>login</mat-icon>Sign In
+        </button>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<mat-dialog-content>
+    <mat-card-actions>
+        <button mat-mini-fab color="primary" (click)="amountMinus()">
+            <mat-icon>exposure_neg_1</mat-icon>
+        </button>&nbsp;
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" name="amount" disabled [(ngModel)]="amount" />
+        </mat-form-field>&nbsp;
+        <button mat-mini-fab color="accent" (click)="amountPlus()">
+            <mat-icon>plus_one</mat-icon>
+        </button>
+    </mat-card-actions>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button color="primary" (click)="updateItemInCart()" mat-stroked-button>
+            <mat-icon>update</mat-icon>Update
+        </button>
+    </mat-dialog-actions>
+</mat-dialog-content>

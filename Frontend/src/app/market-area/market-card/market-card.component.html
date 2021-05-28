@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-header>
+        <h5>{{product.name}}</h5>
+    </mat-card-header>
+    <img mat-card-image [src]="imageUrl" alt="{{product.name}}">
+    <mat-card-content>
+        <mat-card-subtitle>Price: {{product.price | currency}}</mat-card-subtitle>
+
+        <mat-card-actions>
+            <button mat-mini-fab color="primary" (click)="amountMinus()">
+                <mat-icon>exposure_neg_1</mat-icon>
+            </button>&nbsp;
+            <mat-form-field>
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" name="amount" disabled [(ngModel)]="amount" />
+            </mat-form-field>&nbsp;
+            <button mat-mini-fab color="accent" (click)="amountPlus()">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+        </mat-card-actions>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addItemToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>Add To Cart
+        </button>
+    </mat-card-actions>
+</mat-card>

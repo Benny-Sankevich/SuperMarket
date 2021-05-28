@@ -1,0 +1,48 @@
+<div>
+    <h2>Add Product</h2>
+    <form #formInfo="ngForm" (ngSubmit)="formInfo.valid && addProduct(); formInfo.valid && formInfo.resetForm()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select name="categoryId" [(ngModel)]="product.categoryId" #categoryInfo="ngModel" required>
+                <mat-option *ngFor="let category of categories" [value]="category._id">{{category.categoryName}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="categoryInfo.errors?.required">Missing category</mat-error>
+        </mat-form-field>&nbsp;
+
+        <mat-form-field appearance="outline">
+            <mat-label>Product name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="product.name" pattern="^[A-Z].*$" minlength="3"
+                maxlength="20" #productNameInfo="ngModel" required>
+            <mat-error *ngIf="productNameInfo.errors?.required">Missing product name</mat-error>
+            <mat-error *ngIf="productNameInfo.errors?.pattern">Product name must start with a capital letter
+            </mat-error>
+            <mat-error *ngIf="!productNameInfo.errors?.pattern && productNameInfo.errors?.minlength">Product name must
+                minimum 3 chars</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" min="1" name="price" [(ngModel)]="product.price" #priceInfo="ngModel"
+                required>
+            <mat-error *ngIf="priceInfo.errors?.required">Missing price</mat-error>
+        </mat-form-field><br>
+
+        <input #imageBox type="file" accept="image/*" name="image" [(ngModel)]="product.imageName" #imageInfo="ngModel"
+            (change)="handleImage($event)" required>
+        <button mat-button color="primary" class="image-button" type="button" (click)="imageBox.click()">Select
+            Image</button>
+        <br>
+
+        <ng-container *ngIf="preview">
+            <img [src]="preview">
+        </ng-container><br>
+
+        <button mat-raised-button (click)="resetImage()" color="primary" type="reset">Cancel</button>&nbsp;
+        <button mat-button color="primary" mat-stroked-button (click)="checkImage()">
+            <mat-icon>add</mat-icon>Add
+        </button>
+    </form>
+</div>

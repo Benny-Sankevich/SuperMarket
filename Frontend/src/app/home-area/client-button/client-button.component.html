@@ -1,0 +1,8 @@
+<div class="card">
+    <ng-container *ngIf="!cart || cart.isOpenCart === false">
+        <button mat-raised-button color="primary" routerLink="/market">Start Shopping</button>
+    </ng-container>
+    <ng-container *ngIf="cart && cart.isOpenCart === true">
+        <button mat-raised-button color="primary" routerLink="/market">Resume Shopping</button>
+    </ng-container>
+</div>

@@ -1,0 +1,14 @@
+input {
+    width: 250px;
+    box-sizing: border-box;
+}
+img {
+    width: 150px;
+}
+h2 {
+    font-weight: bold;
+    font-size: x-large;
+}
+input[type="file"] {
+    display: none;
+}

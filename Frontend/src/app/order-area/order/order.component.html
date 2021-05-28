@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav mode="side" [(opened)]=opened>
+        <app-cart-list [enableChangesButtons]="false"></app-cart-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <button mat-button (click)="opened=!opened">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            Cart
+            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+
+        <app-order-form></app-order-form>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

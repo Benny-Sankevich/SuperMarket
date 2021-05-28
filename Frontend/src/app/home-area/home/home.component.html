@@ -1,0 +1,22 @@
+<div class="main">
+    <div>
+        <ng-container *ngIf="!user">
+            <app-login></app-login>
+        </ng-container>
+        <ng-container *ngIf="user">
+            <ng-container class="card" *ngIf="user.isAdmin === 'benny-admin'">
+                <app-admin-button></app-admin-button>
+            </ng-container>
+            <ng-container *ngIf="user.isAdmin === 'no'">
+                <app-client-button></app-client-button>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div>
+        <app-about></app-about>
+    </div>
+    <div>
+        <app-info></app-info>
+    </div>
+
+</div>

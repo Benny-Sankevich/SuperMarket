@@ -1,0 +1,21 @@
+<h2 matDialogTitle>Order Complete.</h2>
+<mat-dialog-content>
+
+    <h2>Thank you for the order.</h2>
+    <h3>The invoice number is: {{orderAdded.invoiceNumber}}</h3>
+    <h3>The order price is: {{orderAdded.price| currency}}</h3>
+    <h3>You can view the invoice or click Download to save the invoice.</h3>
+
+    <button mat-raised-button color="warn" (click)="showInvoice()">
+        <mat-icon>pageview</mat-icon>View
+    </button>&nbsp;&nbsp;
+    <button mat-raised-button color="primary" (click)="downloadInvoice()">
+        <mat-icon>save_alt</mat-icon>Download
+    </button>
+
+    <mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close (click)="closeDialog()">
+            <mat-icon>close</mat-icon>Close
+        </button>
+    </mat-dialog-actions>
+</mat-dialog-content>

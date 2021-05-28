@@ -1,0 +1,12 @@
+mat-sidenav-container {
+    height: 100%;
+    background: inherit;
+}
+mat-sidenav {
+    width: 350px;
+}
+mat-sidenav-content {
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}

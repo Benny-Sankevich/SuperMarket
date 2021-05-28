@@ -1,0 +1,10 @@
+mat-card {
+    margin: 5px;
+    width: 270px;
+    border-radius: 15px;
+    background-color: lightsteelblue;
+}
+img {
+    height: 180px;
+    width: 260px;
+}

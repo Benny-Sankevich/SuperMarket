@@ -1,0 +1,24 @@
+mat-sidenav-container {
+  height: 100%;
+  background-color: inherit;
+}
+mat-sidenav {
+  width: 350px;
+}
+mat-form-field {
+  width: 190px;
+  padding: 0;
+}
+mat-label {
+  font-size: large;
+}
+main * {
+  padding-top: 20px;
+  overflow: auto;
+  display: inline-block;
+  height: 90%;
+  margin: 10px;
+}
+header {
+  text-align: left;
+}

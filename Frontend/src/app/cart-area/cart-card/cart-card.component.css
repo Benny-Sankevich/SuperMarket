@@ -1,0 +1,25 @@
+mat-card {
+    width: 80%;
+    margin: 10px;
+    padding-left: 5px;
+    border: 1px solid black;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    background-color: lightsteelblue;
+}
+mat-card-actions {
+    margin: 5px;
+    vertical-align: middle;
+    margin-left: auto;
+    text-align: left;
+    margin: 2px;
+    padding: 2px;
+}
+img {
+    width: 70px;
+    height: 70px;
+}
+button[hidden] {
+    display: none;
+}

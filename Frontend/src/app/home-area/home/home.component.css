@@ -1,0 +1,10 @@
+div {
+    height: 95%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+div * {
+    text-align: center;
+    margin: 30px;
+    padding: 10px;
+}

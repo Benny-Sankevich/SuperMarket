@@ -1,0 +1,13 @@
+.active {
+    color: red;
+    font-weight: bold;
+}
+a,
+span {
+    color: white;
+    font-size: large;
+}
+.main > * {
+    display: inline-block;
+    height: 100%;
+}

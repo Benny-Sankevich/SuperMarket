@@ -1,0 +1,13 @@
+img {
+    width: 150px;
+    height: 150px;
+}
+h2 {
+    font-weight: bold;
+}
+input[type="file"] {
+    display: none;
+}
+mat-dialog-content {
+    height: 650px;
+}

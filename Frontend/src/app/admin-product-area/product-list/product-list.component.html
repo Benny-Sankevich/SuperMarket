@@ -1,0 +1,42 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]=opened>
+        <ng-container *ngIf="this.user.isAdmin === 'benny-admin'">
+            <app-add-product></app-add-product>
+        </ng-container>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+        <header>
+            <button mat-button (click)="opened=!opened">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+                Add Product
+                <mat-icon>add_circle_outline</mat-icon>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+
+            <mat-form-field>
+                <mat-label>
+                    Search Product
+                </mat-label>
+                <input matInput type="search" [(ngModel)]="userSearch">
+                <button mat-button matSuffix mat-icon-button color="primary" (click)="searchProduct()">
+                    &nbsp;&nbsp;<mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <nav mat-tab-nav-bar *ngIf="categories">
+                <a mat-tab-link active (click)="getAllProducts()">All</a>
+                <a mat-tab-link active *ngFor="let c of categories"
+                    (click)="getProductsByCategory(c._id)">{{c.categoryName}}
+                </a>
+            </nav>
+        </header>
+        <main>
+            <mat-progress-bar mode="indeterminate" *ngIf="!products"></mat-progress-bar>
+            <div *ngIf="products">
+                <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+            </div>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,37 @@
+<div class="main">
+    <div>
+        <nav mat-tab-nav-bar>
+
+            <a mat-tab-link routerLink="/">Super Market Online</a>
+
+            <ng-container *ngIf="!user">
+                <a mat-tab-link routerLink="/" routerLinkActive="active">Sign In</a>
+                <a mat-tab-link routerLink="/register" routerLinkActive="active">Sign Up</a>
+            </ng-container>
+
+            <ng-container *ngIf="user">
+                <a mat-tab-link routerLink="/">Home</a>
+
+                <!-- if user is admin -->
+                <a mat-tab-link *ngIf="user.isAdmin==='benny-admin'" routerLink="/products"
+                    routerLinkActive="active">Products</a>
+
+                <!-- if user is not admin -->
+                <ng-container *ngIf="user.isAdmin === 'no'">
+                    <a mat-tab-link routerLink="/market" routerLinkActive="active">Market</a>
+                    <a mat-tab-link routerLink="/order" routerLinkActive="active">Order</a>
+                </ng-container>
+                <a mat-tab-link routerLink="/logout" routerLinkActive="active">Logout</a>
+            </ng-container>
+        </nav>
+    </div>
+    <div>
+        <ng-container *ngIf="!user">
+            <span>Hello Guest</span>
+        </ng-container>
+
+        <ng-container *ngIf="user">
+            <span>Hello {{user.firstName}} {{user.lastName}} </span>
+        </ng-container>
+    </div>
+</div>

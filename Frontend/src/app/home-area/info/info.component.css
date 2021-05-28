@@ -1,0 +1,13 @@
+.card {
+    border: 3px solid gray;
+    height: 550px;
+    width: 400px;
+    border-radius: 25px;
+    font-weight: 600;
+}
+img {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    height: 50%;
+    width: 100%;
+}

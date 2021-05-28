@@ -1,0 +1,11 @@
+div {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 5% 95%;
+}
+header,
+main {
+    grid-column: span 6;
+}
