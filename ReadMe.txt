@@ -1,3 +1,7 @@
+Full Stack | Using lately Program language Frontend: Angular TS, Backend Node.js, Database MongoDB.
+
+Login properties:
+
 Admin
 Username: admin@gmail.com
 Password:12345678
